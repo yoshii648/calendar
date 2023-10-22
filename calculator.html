@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>電卓</title>
+<style>
+    table{
+        border: solid 1px black;
+        padding: 8px;
+        margin: 20px;
+      border-right: solid 4px dimgray;
+      border-bottom: solid 4px dimgray;
+      border-radius: 10px;
+    }
+    .display{
+        width: 320px;
+        height: 50px;
+        font-size: 30px;
+        margin-bottom: 10px;
+        border: solid black;
+        border-radius: 5px;
+        background-color: white;
+    }
+    .display:hover{
+        background-color: white;
+    }
+    input{
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+        background-color: gainsboro;
+        border: none;
+        border-radius: 20px;
+    }
+    input:hover{
+        background-color: darkgray;
+    }
+    .operator{
+        background-color:   lightblue;
+        font-size: 40px;
+    }
+    .operator:hover{
+        background-color: skyblue;
+    }
+
+    .equal_button{
+        background-color: khaki;
+    }
+    .equal_button:hover{
+        background-color: gold
+    }
+
+    .C_button{
+        background-color: khaki;
+    }
+    .C_button:hover{
+        background-color: gold;
+    }
+</style>
+</head>
+<body>
+
+    <form name="calculator">
+        <table>
+            <!--display-->
+            <tr>
+                <td colspan="4">
+                    <input class="display" type="text" name="display" value="">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" class="7_button" onclick="get_calc(this)" ></td>
+                <td><input type="button" value="8" class="8_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="9" class="9_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="÷" class="operator" name="div_btn" onclick="get_calc(this)" ></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" class="4_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="5" class="5_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="6" class="6_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="×" class="operator" name="multi_btn" onclick="get_calc(this)"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" class="1_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="2" class="2_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="3" class="3_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="-" class="operator" onclick="get_calc(this)"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" class="0_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="C" class="C_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="=" class="equal_button" onclick="get_calc(this)"></td>
+                <td><input type="button" value="+" class="operator" onclick="get_calc(this)"></td>
+            </tr>
+    </form>
+
+<script>
+    function get_calc(btn){
+        if(btn.value=="="){
+            document.calculator.display.value = eval(document.calculator.display.value);
+        }else if(btn.value=="C"){
+            document.calculator.display.value="";
+        }else{
+            if(btn.value=="×"){
+                btn.value="*";
+            }else if(btn.value=="÷"){
+                btn.value="/";
+            }
+            document.calculator.display.value += btn.value;
+            document.calculator.multi_btn.value="×";
+            document.calculator.div_btn.value="÷";
+        }
+    }
+</script>
+
+</body>
+</html>
